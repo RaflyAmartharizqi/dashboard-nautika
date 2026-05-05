@@ -9,6 +9,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 
 class LearningMaterialForm
 {
@@ -35,11 +36,11 @@ class LearningMaterialForm
                             ])
                             ->required()
                             ->reactive(),
-
-                        Textarea::make('text_content')
+                        RichEditor::make('text_content')
                             ->label('Isi Text')
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('learning_materials')
                             ->visible(fn ($get) => $get('type') === 'text'),
-
                         FileUpload::make('image_content')
                             ->label('Upload Gambar')
                             ->image()

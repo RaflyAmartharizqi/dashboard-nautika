@@ -11,7 +11,7 @@ class LearningMaterialController extends Controller
 
     public function index()
     {
-        $materi = LearningMaterial::latest()->get();
+        $materi = LearningMaterial::oldest()->get();
 
         return response()->json([
             'code' => 200,
