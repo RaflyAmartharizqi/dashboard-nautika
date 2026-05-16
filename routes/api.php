@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LearningMaterialController;
+use App\Http\Controllers\LearningMaterialGroupsController;
 use App\Http\Controllers\ExamController;
 
 Route::post('/auth/register', [AuthController::class, 'register']);
