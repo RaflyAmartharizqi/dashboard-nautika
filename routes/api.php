@@ -16,11 +16,13 @@ Route::post('/auth/reset-password', [AuthController::class, 'resetPassword']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 
-    Route::get('/learning-material', [LearningMaterialController::class, 'index']);
+    Route::get('/learning-material/{learning_material_group_id}', [LearningMaterialController::class, 'index']);
     Route::get('/learning-material/{id}', [LearningMaterialController::class, 'show']);
     Route::post('/learning-material', [LearningMaterialController::class, 'store']);
     Route::put('/learning-material/{id}', [LearningMaterialController::class, 'update']);
     Route::delete('/learning-material/{id}', [LearningMaterialController::class, 'destroy']);
+
+    Route::get('/learning-material-group', [LearningMaterialGroupsController::class, 'index']);
 
     Route::get('/exam', [ExamController::class,'getListExam']);
     Route::post('/exam/start', [ExamController::class, 'startExam']);

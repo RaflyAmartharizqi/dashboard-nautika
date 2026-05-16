@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class LearningMaterialController extends Controller
 {
 
-    public function index()
+    public function index($learning_material_group_id)
     {
-        $materi = LearningMaterial::oldest()->get();
+        $materi = LearningMaterial::oldest()->where('learning_material_group_id', $learning_material_group_id)->get();
 
         return response()->json([
             'code' => 200,

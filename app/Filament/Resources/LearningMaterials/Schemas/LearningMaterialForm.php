@@ -10,6 +10,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\RichEditor;
+use App\Models\LearningMaterialGroup;
 
 class LearningMaterialForm
 {
@@ -19,6 +20,10 @@ class LearningMaterialForm
             ->components([
 
                 TextInput::make('title')
+                    ->required(),
+                
+                Select::make('learning_material_group_id')
+                    ->options(LearningMaterialGroup::all()->pluck('name', 'id'))
                     ->required(),
 
                 TextInput::make('author'),
