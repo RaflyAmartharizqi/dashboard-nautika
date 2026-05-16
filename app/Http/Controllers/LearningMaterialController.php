@@ -12,7 +12,11 @@ class LearningMaterialController extends Controller
     public function index(Request $request)
     {
         $learning_material_group_id = $request->learning_material_group_id;
-        $materi = LearningMaterial::oldest()->where('learning_material_group_id', $learning_material_group_id)->get();
+        if ($learning_material_group_id) {
+            $materi = LearningMaterial::oldest()->where('learning_material_group_id', $learning_material_group_id)->get();
+        } else {
+            $materi = LearningMaterial::oldest()->get();
+        }
 
         return response()->json([
             'code' => 200,
